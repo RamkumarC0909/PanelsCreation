@@ -1,0 +1,197 @@
+﻿<Window x:Class="PanelsCreation.UserInterface.LoginUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PanelsCreation.UserInterface"
+        mc:Ignorable="d"
+        Title="LoginUI" MaxHeight="570" MaxWidth="450"
+        MinHeight="570" MinWidth="450" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryColor" Color="#1565C0"/>
+        <SolidColorBrush x:Key="PrimaryDarkColor" Color="#0D47A1"/>
+        <SolidColorBrush x:Key="PrimaryLightColor" Color="#1976D2"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#2196F3"/>
+        <SolidColorBrush x:Key="AccentLightColor" Color="#1E88E5"/>
+        <SolidColorBrush x:Key="TextPrimaryColor" Color="#212121"/>
+        <SolidColorBrush x:Key="TextSecondaryColor" Color="#757575"/>
+        <SolidColorBrush x:Key="DividerColor" Color="#E0E0E0"/>
+        <SolidColorBrush x:Key="ErrorColor" Color="#E53935"/>
+
+        <!-- TextBox Style -->
+        <Style x:Key="MaterialTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="8,8,8,5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DividerColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- PasswordBox Style -->
+        <Style x:Key="MaterialPasswordBox" TargetType="{x:Type PasswordBox}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="8,8,8,5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DividerColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Button Style -->
+        <Style x:Key="MaterialButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource AccentLightColor}"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{StaticResource PrimaryLightColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Hyperlink Style -->
+        <Style x:Key="MaterialHyperlink" TargetType="{x:Type Hyperlink}">
+            <Setter Property="Foreground" Value="{StaticResource AccentColor}"/>
+            <Setter Property="TextDecorations" Value="None"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource AccentLightColor}"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="TextDecorations" Value="Underline"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- CheckBox Style -->
+        <Style x:Key="MaterialCheckBox" TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="{StaticResource TextSecondaryColor}"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border x:Name="loginSP" Background="White" 
+        CornerRadius="8" 
+        BorderBrush="{StaticResource PrimaryColor}" 
+        BorderThickness="1" 
+        Padding="10" 
+        Margin="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="270" ShadowDepth="3" Opacity="0.2"/>
+            </Border.Effect>
+            <Grid>
+                <StackPanel>
+                    <!-- App Logo -->
+                    <Image x:Name="logoImage" Source="/Resources/icon.png" Height="60" Width="60" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+                    <!-- Header -->
+                    <TextBlock Text="PanelsCreater Login" 
+                   FontSize="22" 
+                   FontWeight="SemiBold" 
+                   HorizontalAlignment="Center" 
+                   Foreground="{StaticResource PrimaryColor}" 
+                   Margin="0,0,0,25"/>
+
+                    <!-- Username Field -->
+                    <Label Content="Username" 
+               x:Name="userNameLabel"
+               Foreground="{StaticResource TextSecondaryColor}" 
+               FontSize="12" 
+               FontWeight="Medium"
+               Padding="8,0,0,0" 
+               Margin="0,5,0,0"/>
+                    <TextBox x:Name="userName" 
+                 Style="{StaticResource MaterialTextBox}" 
+                 Margin="0,0,0,15"/>
+
+                    <!-- Password Field -->
+                    <Label Content="Password" 
+               x:Name="passwordLabel"
+               Foreground="{StaticResource TextSecondaryColor}" 
+               FontSize="12" 
+               FontWeight="Medium"
+               Padding="8,0,0,0" 
+               Margin="0,5,0,0"/>
+                    <PasswordBox x:Name="password" 
+                     Style="{StaticResource MaterialPasswordBox}" 
+                     Margin="0,0,0,5"/>
+
+                    <!-- Remember Me & Error Message -->
+                    <Grid Margin="0,15,0,20">
+                        <CheckBox x:Name="rememberMe" Style="{StaticResource MaterialCheckBox}"
+                      Content="Remember me" 
+                      HorizontalAlignment="Left"/>
+                        <Label x:Name="messageLabel" 
+                   Content="" 
+                   Foreground="{StaticResource ErrorColor}" 
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Center" 
+                   FontSize="12"/>
+                    </Grid>
+
+                    <!-- Login Button -->
+                    <Button Style="{StaticResource MaterialButton}" 
+                Content="LOGIN" 
+                Margin="0,10,0,20" 
+                Height="40" 
+                Click="Button_Click"/>
+
+                    <!-- Help Links -->
+                    <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="13">
+            <Hyperlink Style="{StaticResource MaterialHyperlink}">Forgot password?</Hyperlink>
+                    </TextBlock>
+
+                    <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="13">
+            <Run Text="Don't have an account? " Foreground="{StaticResource TextSecondaryColor}"/>
+            <Hyperlink Style="{StaticResource MaterialHyperlink}">Sign up</Hyperlink>
+                    </TextBlock>
+
+                    <!-- Include this hidden Image to fix the CS0103 error -->
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+

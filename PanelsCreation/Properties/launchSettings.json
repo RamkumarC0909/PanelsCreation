@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "PanelsCreation": {
+      "commandName": "Project"
+    },
+    "console": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Autodesk\\AutoCAD 2025\\accoreconsole.exe",
+      "commandLineArgs": "/i \"D:\\PanelsCreation\\PanelsCreation\\bin\\Debug\\net8.0-windows\\E001-Input.dwg\" /s \"D:\\PanelsCreation\\PanelsCreation\\bin\\Debug\\net8.0-windows\\Script.scr\""
+    },
+    "exe": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Autodesk\\AutoCAD 2025\\acad.exe"
+    }
+  }
+}
